@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Liberta.Casa</title>
+</head>
+
+<body>
+<pre>
+┬   ┌┬┐ ┬─┐ ┬─┐ ┬─┐ ┌┐┐ ┬─┐
+│    │  │─│ │─  │┬┘  │  │─┤
+┘─┘ └┴┘ │─┘ ┴─┘ │└┘  ┘  ┘ │
+
+┌─┐ ┬─┐ ┐─┐ ┬─┐
+│   │─┤ └─┐ │─┤
+└─┘ ┘ │ ──┘ ┘ │
+
+
+    aims to be a community run IRC server running serving as a safe space for the discussion and dissemination
+of various topics under the umbrella of Science, Philosophy, Politics etc and a general place to hang back and idle away.
+
+
+
+Don't engage in the following:
+=============================
+
+    -Repeated harassment of any network user.
+    -Distribution of child pornography.
+    -Any denial of service against the network or its users.
+    -Use of our network resources or services for malicious intent.
+    -Connecting to the network for any reason using a compromised machine, including as a proxy or loading trojans or bots.
+    -Unwanted advertisement of websites, IRC network, or channels (also known as spamming).
+    -Evading bans, either those placed by network staff or by individual channels.
+    -Impersonation of network staff or services.
+    -Connecting through open proxies.
+    -Any other behavior deemed inappropriate by network staff.
+
+
+
+
+Connection Details:
+===================
+
+
+To connect simple configure your IRC client as follows:
+
+Host:       irc.liberta.casa
+Port:       6697
+SSL/TLS:    True
+Channel:    #chat
+
+You will also be able to use a web-client which will be up shortly <a href="kiwi/">here</a>.
+
+
+type /list for more channels.
+
+
+
+Account registration FAQ
+========================
+
+1. How do I register my nickname / account?
+
+Use this command, substituting your desired password and e-mail address:
+
+/msg NickServ register mySecretPassword
+
+You can also register on this page <a href="{{ url_for('register')}}">here</a>
+
+Once you register your nick it becomes your account name. It is the name with which you are expected to login.
+
+
+2. How do I authenticate to my nickname?
+
+You should enable SASL in your client. For clients like Hexchat the Username field needs to be populated with the name that you registered.
+
+
+If your client doesn't support SASL, there are potential workarounds;
+you may be able to script your client to authenticate to NickServ
+automatically, with `/msg NickServ identify nickname password`.
+
+Ask in #help for support with this.
+
+3. What are the benefits of registering my nickname?
+
+The primary benefit of nickname registration is that the server can act
+as an "IRC bouncer" on your behalf. Specifically:
+
+  a. No one else will be able to use your nickname
+  b. If all your clients are configured to use SASL, they can all use the same
+     nickname (as though they were connected to the same ZNC instance)
+  c. Optionally, the server can keep you present on the server even if
+     you have no connected clients. To enable this, use the following command:
+     `/msg NickServ set always-on true`
+  d. You will be able to receive history playback (see below).
+
+You can also request a vhost (i.e., a fake hostname that will be displayed
+in place of your cloaked IP-based hostname), using the command
+`/msg HostServ request desired.vhost`. An operator will review this request
+(and most likely grant it).
+
+
+4. History Playback.
+
+typing the command /quote History #channel 1h will give you 1hr of history playback for that channel.
+</pre>
+</body>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF-8">
+        <title>Register</title>
+</head>
+
+<body>
+<pre>
+┬   ┌┬┐ ┬─┐ ┬─┐ ┬─┐ ┌┐┐ ┬─┐
+│    │  │─│ │─  │┬┘  │  │─┤
+┘─┘ └┴┘ │─┘ ┴─┘ │└┘  ┘  ┘ │
+
+┌─┐ ┬─┐ ┐─┐ ┬─┐
+│   │─┤ └─┐ │─┤
+└─┘ ┘ │ ──┘ ┘ │
+
+<form method="POST" action="/register">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>Sign Up</legend>
+        {{ form.username.label }}
+        {{ form.username }}
+        {{ form.password.label }}
+        {{ form.password }}
+        {{ form.confirm_password.label }}
+        {{ form.confirm_password }}
+    </fieldset>
+    {{ form.submit }}
+</form>
+
+If you already have an account please login to the IRC using SASL.
