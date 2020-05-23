@@ -1,15 +1,23 @@
-# liberta-casa
+# Liberta Casa
 
-The goal here is to make the procedure for registration to an ircd absolutely noob friendly whilst still using the services.
+This has a series of little enhancements I have taken up as pet projects.
 
-This is the rough procedure. 
-1. The user will go to the registration page. [Placeholder](https://liberta.casa/register.html). They
-  will submit their username and they will type out the password. Both of these fields have validation
-  checks dependent on the ircd which are hardcoded. Then they shall click on Register. 
+### Registration Page
 
-2. That will trigger a POST to the same route. upon detection it will capture the fields and it shall trigger a connection
-  by the bot. The bot will connect to the ircd and pass the commands to set it's details based on the username provided using
-  USER and NICK commands. If the nick is already in use, the Error code returned will be converted to a username already taken
-  alert on the webpage. prompting them to retry. If the nick is not in use then the bot will pass the PRIVMSG to services to
-  `REGISTER password` where the password will be replaced by the one captured by flask webapp. The reply code for successful
-  registration shall be checked for and upon recieving it it shall display a message for the user to login using SASL.
+##### Theoreticals
+
+It includes the following technologies: oragono, flask, a python bot.
+
+It consists of the following flow.
+
+1. A user shall go on to the [registration](https://liberta.casa/register.html) (placeholder). They will enter the details and click on Register.
+   * The Website is generated using `flask` and the form is generated using `wtforms, flask_wtf`. 
+   * It shall capture the username and password entered by the user and POST it to the same route.
+   * The username and password already have validators to ensure they fit within the parameters if the oragono ircd services. eg. NICKLEN 32
+2. The bot will be triggered and it shall carry the information provided as arguments by connecting to the IRCd.
+3. It will use the `USER` ,`NICK ` commands to register the connection on the IRCd then assign the nickname same as that passed on by the flask route. 
+   * If the nickname is already in use then the received the `433` code will be captured and translated back to the user as suggestion to retry with a different username and while the password should be discarded?
+   * If the `NICK` command is successful it shall proceed to the next step
+4. Using the `PRIVMSG` command the bot shall register for the user and then ? should it capture the registration success NOTICE from the services to confirm back to the user? are there cases where it may not succeed?
+5. After this the bot shall Die as if it never existed  and the user will be redirected to the page which contains Rules and FAQs about login and features.
+
