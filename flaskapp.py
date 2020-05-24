@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, flash
 from forms import RegistrationForm
 from irc_register import ircregister
 
@@ -18,16 +18,16 @@ def register():
 
         username = request.form.get('username')
         password = request.form.get('password')
-        ircregister(username, password)
-        response = ircregister()
+        response = ircregister(username, password)
         if response == "server failure":
-            print("x") #add a redirect to a different route?
+            flash("Server Unavailable")
         elif response == "433":
-            print("Please select a different Nick") # Figure out how to deliver this response. popups suck.
+            flash("Username already taken. Please select a different username")
         elif response == "success":
-            print("Successfull Registration") # add a redirect to the home page?
+            flash(f"Account {username} registered")
+            return redirect(url_for('hello'))
         elif response == "failure":
-            print("Unknown Error") # Try later...
+            flash("Failure! Please try after some time or use NickServ.")
 
     return render_template('register.html', title='Register', form=form)
 
