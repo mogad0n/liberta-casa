@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect, flash
 from forms import RegistrationForm
 from irc_register import ircregister
+import os
 
 
 app = Flask(__name__)
@@ -32,4 +33,10 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    try :
+        port = int(os.getenv("HTTP_PORT"))
+    except :
+        port = 5000
+    host = os.getenv("HTTP_HOST") or "127.0.0.1"
+    debug = os.getenv("DEBUG") or True
+    app.run(debug=debug, host=host, port=port)
