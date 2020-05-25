@@ -1,4 +1,5 @@
 import socket, irctokens
+import os
 
 
 def ircregister(username, password):
@@ -8,7 +9,12 @@ def ircregister(username, password):
     s = socket.socket()
 
     #connecting to the server
-    s.connect(("127.0.0.1", 6667))
+    host = os.getenv("IRC_HOST") or "127.0.0.1"
+    try :
+        port = int(os.getenv("IRC_PORT"))
+    except :
+        port = 6667
+    s.connect((host, port))
 
     #defining the send function with proper formatting
     def _send(line):
