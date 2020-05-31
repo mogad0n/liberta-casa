@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request, redirect, flash
-from forms import RegistrationForm
+from forms import RegistrationForm, VerificationForm
 from irc_register import ircregister
 from irc_verify import ircverify
 
