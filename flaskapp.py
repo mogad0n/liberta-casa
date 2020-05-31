@@ -35,7 +35,7 @@ def register():
 
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/verify',methods=['GET', 'POST'])
+@app.route('/verify', methods=['GET', 'POST'])
 def verify():
     form = VerificationForm()
     if request.method == 'POST':
