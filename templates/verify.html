@@ -3,7 +3,7 @@
 
 <head>
         <meta charset="UTF-8">
-        <title>Register</title>
+        <title>Verify</title>
 </head>
 
 <body>
@@ -19,18 +19,16 @@
 │   │─┤ └─┐ │─┤
 └─┘ ┘ │ ──┘ ┘ │
 
+Please check your the registered email for the verification code (double check in spam!)
+
 <form method="POST" action="/register">
     {{ form.hidden_tag() }}
     <fieldset>
-        <legend>Sign Up</legend>
+        <legend>Verify Your Account</legend>
         {{ form.username.label }}
         {{ form.username }}
-        {{ form.email.label }}
-        {{ form.email }}
-        {{ form.password.label }}
-        {{ form.password }}
-        {{ form.confirm_password.label }}
-        {{ form.confirm_password }}
+        {{ form.verif_code.label }}
+        {{ form.verif_code }}
     </fieldset>
     {{ form.submit }}
 </form>

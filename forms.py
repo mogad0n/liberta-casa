@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Length, EqualTo
+from wtforms.validators import DataRequired, Length, EqualTo, Email
 
 
 class RegistrationForm(FlaskForm):
@@ -13,3 +13,4 @@ class RegistrationForm(FlaskForm):
 class VerificationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=1, max=32)])
     verif_code = StringField('Verification Code', validators=[DataRequired()])
+    submit = SubmitField('Verify')
