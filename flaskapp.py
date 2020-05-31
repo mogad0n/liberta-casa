@@ -11,6 +11,9 @@ app.config['SECRET_KEY'] = '189aee7e774aaedce1269c5a35966db7' #remove later
 def hello():
     return render_template('home.html')
 
+@app.route('/kiwi')
+def kiwi():
+    return redirect("http://www.liberta.casa/kiwi/")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
