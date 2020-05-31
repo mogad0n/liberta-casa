@@ -1,7 +1,7 @@
 import socket, irctokens
 
 
-def ircregister(username, password, email):
+def ircverify(username, verif_code):
     # define the variables
     d = irctokens.StatefulDecoder()
     e = irctokens.StatefulEncoder()
@@ -16,7 +16,6 @@ def ircregister(username, password, email):
         e.push(line)
         while e.pending():
             e.pop(s.send(e.pending()))
-
     # registering the connection to the server
 
     _send(irctokens.build("USER", [username, "0", "*", username]))
@@ -38,10 +37,8 @@ def ircregister(username, password, email):
                 return "433"
 
             elif line.command == "005": # when 005 is received pass the nickserv register command command
-                _send(irctokens.build("PRIVMSG", ["NickServ", f"REGISTER {password} {email}"]))
+                _send(irctokens.build("PRIVMSG", ["NickServ", f"VERIFY {username} {verif_code}"]))
 
-            if line.command == "NOTICE" and line.params == [username, f"Account created, pending verification; verification code has been sent to {email}"]: # if Services respond with appropriate notice NOTICE
+            if line.command == "NOTICE" and line.params == [username, "Account created"]: # if Services respond with appropriate notice NOTICE
                 _send(irctokens.build("QUIT"))
                 return "success"
-
-# register("hello", "test")
