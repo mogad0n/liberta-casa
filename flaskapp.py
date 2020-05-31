@@ -24,7 +24,6 @@ def register():
         elif response == "433":
             flash("Username already taken. Please select a different username")
         elif response == "success":
-            flash(f"Account {username} registered")
             return redirect(url_for('hello'))
         elif response == "failure":
             flash("Failure! Please try after some time or use NickServ.")

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 
+<!DOCTYPE html>
+<html>
+
 <head>
 <meta charset="UTF-8">
 <title>Liberta.Casa</title>
@@ -20,13 +23,17 @@
     aims to be a community run IRC server running serving as a safe space for the discussion and dissemination
 of various topics under the umbrella of Science, Philosophy, Politics etc and a general place to hang back and idle away.
 
+<a href="{{ url_for('kiwi') }}">WebChat</a>
+
+<a href="{{ url_for('register') }}">Registration</a>
 
 
-Don't engage in the following:
-=============================
+Donts:
+======
 
     -Repeated harassment of any network user.
     -Distribution of child pornography.
+    -Dealing of goods and using the network as a space for commericial operations.
     -Any denial of service against the network or its users.
     -Use of our network resources or services for malicious intent.
     -Connecting to the network for any reason using a compromised machine, including as a proxy or loading trojans or bots.
@@ -42,16 +49,26 @@ Don't engage in the following:
 Connection Details:
 ===================
 
-
-To connect simple configure your IRC client as follows:
+Hostnames are cryptographically cloaked so that your IP address information is not visible to others.
+It is still visible to server administrators.
+To connect configure your IRC client as follows:
 
 Host:       irc.liberta.casa
 Port:       6697
 SSL/TLS:    True
 Channel:    #chat
 
-You will also be able to use a web-client which will be up shortly <a href="kiwi/">here</a>.
+You can also use a web-client <a href="{{ url_for('kiwi')}}">here</a>.
 
+
+If you would like to anonymize the connection against the administrators,
+you can access the network via TOR:
+
+Host:     2hktberlxdgyqdqiztuk2zix6xg4ch4kjm7zevpi5plor7a7jfcenrad.onion
+Port:   6667
+SSL/TLS:  False
+SASL:   Required for logins
+Channel:  #chat
 
 type /list for more channels.
 
