@@ -10,7 +10,7 @@ It includes the following technologies: oragono IRCd, flask, a python bot using 
 
 It consists of the following flow.
 
-1. A user shall go on to the [registration](https://liberta.casa/register.html) (placeholder). They will enter the details and click on Register.
+1. A user shall go on to the [registration](https://liberta.casa/register.html) . They will enter the details and click on Register.
    * The Website is generated using `flask` and the form is generated using `wtforms, flask_wtf`. 
    * It shall capture the username and password entered by the user and POST it to the same route.
    * The username and password already have validators to ensure they fit within the parameters if the oragono ircd services. eg. NICKLEN 32
@@ -23,3 +23,13 @@ It consists of the following flow.
 5. TODO: If this fails add and unconditional which exits or it will be an infinite loop.
 6. After this success the bot shall Die  and the user will be redirected to the page which contains Rules and FAQs about login and features.
 
+### Verification Page
+
+this has been added to engage email verification during registration to prevent registration spam.
+it follows the same exact procedure.
+
+
+#### Known Drawbacks
+
+CSFR token used to prevent cross site forgery attacks
+the ip that connects during registration is localhost itself which prevents checks agains abuse in a way. If there is a way to capture the ip from the website visit and post it to the route and incorporate it somehow then it can be done.
